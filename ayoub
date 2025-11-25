@@ -1,0 +1,18 @@
+// php version: 8.2.12
+// composer version : 2.7.2
+// nodejs version 10.7
+
+composer install
+
+php artisan key:generate
+
+php artisan migrate
+php artisan db:seed
+
+php artisan serve // start application laravel
+php artisan reverb:start // start reverb for chat
+
+
+npm install
+npm run dev  // compile ressources js /csss
+
