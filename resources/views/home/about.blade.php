@@ -21,7 +21,7 @@
           </div>
           <!-- Image Right -->
           <div class="col-12 col-md-6">
-            <img src="images/mission.png" class="img-fluid rounded" alt="Mission">
+            <img src="{{asset('storage/images/static/mission.png')}}" class="img-fluid rounded" alt="Mission">
           </div>
         </div>
       </div>
@@ -41,7 +41,7 @@
       <!-- Team Member 1 -->
       <div class="col-12 col-md-4">
         <div class="card text-center p-4">
-          <img src="images/elon.jpg" class="profile-img mx-auto d-block" style="width:120px; height:120px;" alt="Luna Turner">
+          <img src="{{asset('storage/images/static/elon.jpg')}}" class="profile-img mx-auto d-block" style="width:120px; height:120px;" alt="Luna Turner">
           <h3 class="fw-bold">Luna Turner</h3>
           <p class="text-uppercase text-muted">Founder</p>
           <div class="team-icons">
@@ -55,7 +55,7 @@
       <!-- Team Member 2 -->
       <div class="col-12 col-md-4">
         <div class="card text-center p-4">
-          <img src="images/elon.jpg" class="profile-img mx-auto d-block" style="width:120px; height:120px;" alt="Bryant Hall">
+          <img src="{{asset('storage/images/static/elon.jpg')}}" class="profile-img mx-auto d-block" style="width:120px; height:120px;" alt="Bryant Hall">
           <h3 class="fw-bold">Bryant Hall</h3>
           <p class="text-uppercase text-muted">Developer</p>
           <div class="team-icons">
@@ -69,7 +69,7 @@
       <!-- Team Member 3 -->
       <div class="col-12 col-md-4">
         <div class="card text-center p-4">
-          <img src="images/elon.jpg" class="profile-img mx-auto d-block" style="width:120px; height:120px;" alt="Hope Watkins">
+          <img src="{{asset('storage/images/static/elon.jpg')}}" class="profile-img mx-auto d-block" style="width:120px; height:120px;" alt="Hope Watkins">
           <h3 class="fw-bold">Hope Watkins</h3>
           <p class="text-uppercase text-muted">Designer</p>
           <div class="team-icons">

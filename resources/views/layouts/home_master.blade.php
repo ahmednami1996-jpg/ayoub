@@ -22,7 +22,7 @@
 
       <!-- Logo Left -->
       <a class="navbar-brand" href="{{route('home')}}">
-        <img src="logo.png" alt="Logo" height="45">
+        <img src="{{asset('storage/logo.png')}}" alt="Logo" height="45">
       </a>
 
       <!-- Hamburger Button (mobile only) -->
@@ -65,13 +65,13 @@
           <div id="profile-info" class="dropdown" >
             <button class="btn btn-light d-flex align-items-center gap-2 border rounded-pill px-3 py-2" 
                     type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img id="profile-pic" src="images/elon.jpg" alt="Profile" class="rounded-circle" width="36" height="36">
-              <span id="profile-name" class="fw-medium">John Doe</span>
+              <img id="profile-pic" src="{{asset('storage/images/static/elon.jpg')}}" alt="Profile" class="rounded-circle" width="36" height="36">
+              <span id="profile-name" class="fw-medium">{{auth()->user()->username}}</span>
             </button>
             <ul class="dropdown-menu dropdown-menu-end shadow">
               <li><a class="dropdown-item" href="{{route('user.profile')}}">Profile</a></li>
-              <li><a class="dropdown-item" href="mesprojets.html">Mes Projets</a></li>
-              <li><a class="dropdown-item" href="mesinvestissements.html">Mes Investissements</a></li>
+              <li><a class="dropdown-item" href="{{route('user.profile')}}">Table de bord</a></li>
+             
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item text-danger" href="{{route('user.logout')}}">Logout</a></li>
             </ul>
@@ -94,7 +94,7 @@
       
       <!-- LEFT: Logo + Social -->
       <div class="left-col">
-        <img src="logo.png" alt="Logo" class="logo">
+        <img src="{{asset('storage/logo.png')}}" alt="Logo" class="logo">
         <p>lorem ipsum lorem ipsum.</p>
         <div class="social-media">
           <a href="#"><i class="fab fa-twitter"></i></a>
