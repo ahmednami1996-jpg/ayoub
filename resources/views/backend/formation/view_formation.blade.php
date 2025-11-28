@@ -46,7 +46,7 @@
                 <td>{{$formation->views}}</td>
                <td>  <form action="{{route('formation.change.status',$formation->id)}}" method="post">
                     @csrf
-                <button class="btn {{ $formation->status==1 ?'btn-danger':'btn-success'}}"> {{ $formation->status==1  ?"Désactiver" :"Activer" }}</button>
+                <button class="btn w-100 {{ $formation->status==1 ?'btn-danger':'btn-success'}}"> {{ $formation->status==1  ?"Désactiver" :"Activer" }}</button>
                 </form>
              </td>
              <td class="text-center">

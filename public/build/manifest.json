@@ -1,0 +1,97 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-tn0RQdqM.css",
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "name": "app",
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-DpU9_pUX.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "css": [
+      "assets/app-Vg5tqd8r.css"
+    ],
+    "assets": [
+      "assets/fa-brands-400-DckZVAXR.eot",
+      "assets/fa-brands-400-B9B0FQJq.woff2",
+      "assets/fa-brands-400-kK0FQ5N5.woff",
+      "assets/fa-brands-400-CrE2PVWA.ttf",
+      "assets/fa-brands-400-B64ZyEta.svg",
+      "assets/fa-regular-400-BJgv9e-P.eot",
+      "assets/fa-regular-400-83_sh5h9.woff2",
+      "assets/fa-regular-400-D0k2dGf6.woff",
+      "assets/fa-regular-400-CrYtHrr6.ttf",
+      "assets/fa-regular-400-CDToj4bb.svg",
+      "assets/fa-solid-900-DCN5Y-DR.eot",
+      "assets/fa-solid-900-BiazUjGD.woff2",
+      "assets/fa-solid-900-f8GZlByx.woff",
+      "assets/fa-solid-900-BL38lqC-.ttf",
+      "assets/fa-solid-900-yxPp-O_O.svg"
+    ]
+  },
+  "resources/vendor/fontawesome-free/webfonts/fa-brands-400.eot": {
+    "file": "assets/fa-brands-400-DckZVAXR.eot",
+    "src": "resources/vendor/fontawesome-free/webfonts/fa-brands-400.eot"
+  },
+  "resources/vendor/fontawesome-free/webfonts/fa-brands-400.svg": {
+    "file": "assets/fa-brands-400-B64ZyEta.svg",
+    "src": "resources/vendor/fontawesome-free/webfonts/fa-brands-400.svg"
+  },
+  "resources/vendor/fontawesome-free/webfonts/fa-brands-400.ttf": {
+    "file": "assets/fa-brands-400-CrE2PVWA.ttf",
+    "src": "resources/vendor/fontawesome-free/webfonts/fa-brands-400.ttf"
+  },
+  "resources/vendor/fontawesome-free/webfonts/fa-brands-400.woff": {
+    "file": "assets/fa-brands-400-kK0FQ5N5.woff",
+    "src": "resources/vendor/fontawesome-free/webfonts/fa-brands-400.woff"
+  },
+  "resources/vendor/fontawesome-free/webfonts/fa-brands-400.woff2": {
+    "file": "assets/fa-brands-400-B9B0FQJq.woff2",
+    "src": "resources/vendor/fontawesome-free/webfonts/fa-brands-400.woff2"
+  },
+  "resources/vendor/fontawesome-free/webfonts/fa-regular-400.eot": {
+    "file": "assets/fa-regular-400-BJgv9e-P.eot",
+    "src": "resources/vendor/fontawesome-free/webfonts/fa-regular-400.eot"
+  },
+  "resources/vendor/fontawesome-free/webfonts/fa-regular-400.svg": {
+    "file": "assets/fa-regular-400-CDToj4bb.svg",
+    "src": "resources/vendor/fontawesome-free/webfonts/fa-regular-400.svg"
+  },
+  "resources/vendor/fontawesome-free/webfonts/fa-regular-400.ttf": {
+    "file": "assets/fa-regular-400-CrYtHrr6.ttf",
+    "src": "resources/vendor/fontawesome-free/webfonts/fa-regular-400.ttf"
+  },
+  "resources/vendor/fontawesome-free/webfonts/fa-regular-400.woff": {
+    "file": "assets/fa-regular-400-D0k2dGf6.woff",
+    "src": "resources/vendor/fontawesome-free/webfonts/fa-regular-400.woff"
+  },
+  "resources/vendor/fontawesome-free/webfonts/fa-regular-400.woff2": {
+    "file": "assets/fa-regular-400-83_sh5h9.woff2",
+    "src": "resources/vendor/fontawesome-free/webfonts/fa-regular-400.woff2"
+  },
+  "resources/vendor/fontawesome-free/webfonts/fa-solid-900.eot": {
+    "file": "assets/fa-solid-900-DCN5Y-DR.eot",
+    "src": "resources/vendor/fontawesome-free/webfonts/fa-solid-900.eot"
+  },
+  "resources/vendor/fontawesome-free/webfonts/fa-solid-900.svg": {
+    "file": "assets/fa-solid-900-yxPp-O_O.svg",
+    "src": "resources/vendor/fontawesome-free/webfonts/fa-solid-900.svg"
+  },
+  "resources/vendor/fontawesome-free/webfonts/fa-solid-900.ttf": {
+    "file": "assets/fa-solid-900-BL38lqC-.ttf",
+    "src": "resources/vendor/fontawesome-free/webfonts/fa-solid-900.ttf"
+  },
+  "resources/vendor/fontawesome-free/webfonts/fa-solid-900.woff": {
+    "file": "assets/fa-solid-900-f8GZlByx.woff",
+    "src": "resources/vendor/fontawesome-free/webfonts/fa-solid-900.woff"
+  },
+  "resources/vendor/fontawesome-free/webfonts/fa-solid-900.woff2": {
+    "file": "assets/fa-solid-900-BiazUjGD.woff2",
+    "src": "resources/vendor/fontawesome-free/webfonts/fa-solid-900.woff2"
+  }
+}

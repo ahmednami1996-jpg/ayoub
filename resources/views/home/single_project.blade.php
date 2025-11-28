@@ -5,32 +5,24 @@
 
   
   
-
 <!-- Project Details Section -->
 <section class="project-details py-5 bg-light">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 col-lg-10 col-xl-8">
           <div class="project-card bg-white shadow-lg rounded-3 p-4">
-            <div class="text-right">
-            <a href="{{route('apply.create',$project->id)}}" class="btn btn-primary">
-Candidature
-            </a>
-          </div>
             <!-- Title -->
-            <h1 class="text-center fw-bold mb-4" style="color: #00adef;">{{$project->title}}</h1>
+            <h1 class="text-center fw-bold mb-4" style="color: #00adef;">T{{$project->title ?? "aucun titre"}}</h1>
   
             <!-- Image -->
             <div class="text-center mb-4">
-              <img src="{{asset('storage/images/projects/'.$project->picture)}}" alt="Produit 1" class="img-fluid rounded" style="max-width: 400px; height: auto;">
+              <img src="{{asset('storage/images/projects/'.$project->id)}}" alt="Produit 1" class="img-fluid rounded" style="max-width: 400px; height: auto;">
             </div>
   
             <!-- Categorie -->
             <div class="mb-4">
               <h5 class="fw-semibold text-muted mb-1">Catégorie</h5>
-              <p class="text-muted mb-0"> @foreach($categories as $category)
-                    {{$category->id == $project->category_id ? $category->name:""}}
-                    @endforeach</p>
+              <p class="text-muted mb-0">{{$prodject->category->name ?? "aucune catégorie"}}</p>
             </div>
   
             <!-- Resume -->
@@ -45,8 +37,8 @@ Candidature
             <div class="mb-4">
               <h5 class="fw-semibold text-muted mb-2">Description</h5>
               <p class="text-muted">
-               {{ $project->description}}
-              </p>
+         {{$project->description}}
+            </p>
             </div>
   
             <!-- Marché -->
@@ -62,7 +54,7 @@ Candidature
                 <h5 class="fw-semibold text-muted mb-2">Traction (KPI)</h5>
                 <div class="row text-center g-3">
                 <div class="col-sm-6 col-lg-3">
-                    <h4 class="fw-bold text-primary">{{$project->kpi_users >=1000 ?number_format($project->kpi_users).'K' :$project->kpi_users  }}</h4>
+                    <h4 class="fw-bold text-primary">{{$project->kpi_users}}</h4>
                     <p class="text-muted mb-0">Utilisateurs actifs</p>
                 </div>
                 <div class="col-sm-6 col-lg-3">
@@ -70,7 +62,7 @@ Candidature
                     <p class="text-muted mb-0">Croissance mensuelle</p>
                 </div>
                 <div class="col-sm-6 col-lg-3">
-                    <h4 class="fw-bold text-primary">${{$project->annual_revenue_formatted}}</h4>
+                    <h4 class="fw-bold text-primary">{{$project->annual_revenue}}</h4>
                     <p class="text-muted mb-0">Revenus annuels</p>
                 </div>
                 <div class="col-sm-6 col-lg-3">
@@ -91,7 +83,7 @@ Candidature
             <!-- Montant d'investissement -->
             <div class="mb-4">
               <h5 class="fw-semibold text-muted mb-2">Montant d'investissement</h5>
-              <p class="text-primary fw-bold fs-4">$ {{$project->budget_formatted}}</p>
+              <p class="text-primary fw-bold fs-4">${{$project->budget}}</p>
             </div>
   
             <!-- Type d'investissement -->
@@ -104,12 +96,10 @@ Candidature
             <div class="mb-4">
               <h5 class="fw-semibold text-muted mb-2">Documents</h5>
               <div class="d-flex flex-wrap gap-2">
-                @foreach($project->documents as $doc)
-                <a href="{{asset('storage/documents/projects')}}" download class="btn btn-outline-secondary btn-sm mx-2">
-                  <i class="bi bi-file-earmark-pdf"></i> Fichier {{$doc->id}}
+                @foreach($project->documents as $key =>$doc)
+                <a href="{{asset('storage/documents/projects/'.$doc->file_name)}}"  class="btn btn-outline-secondary btn-sm">
+                  <i class="bi bi-file-earmark-pdf"></i> Fichier {{$key}}
                 </a>
-
-                @endforeach
                
               </div>
             </div>
@@ -118,7 +108,6 @@ Candidature
       </div>
     </div>
   </section>
-
 
 
 

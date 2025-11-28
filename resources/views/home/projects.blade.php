@@ -129,7 +129,7 @@
 
                     @foreach($projects as $key =>$project)
 
-                    <div class="col-8 col-md-4">
+                    <div class="col-12 col-sm-6 col-lg-4">
                         <div class="card h-100 shadow-sm">
                             <img src="{{asset('storage/images/projects/'.$project->picture)}}" class="card-img-top" alt="Produit 5">
                             <div class="card-body d-flex flex-column">

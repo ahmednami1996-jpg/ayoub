@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])   
+   
 
 </head>
 <body>
@@ -12,73 +15,69 @@
   <!-- Header -->
   
     
-    
-  <header class="border-bottom">
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+     <!-- ========== NEW CLEAN HEADER ========== -->
+<header class="border-bottom shadow-sm bg-white sticky-top">
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
 
-      <!-- Logo -->
-      <a class="navbar-brand d-flex align-items-center" href="{{route('home')}}">
-        <img src="{{asset('storage/logo.png')}}" alt="Logo" height="40" class="mr-2">
+      <!-- Logo Left -->
+      <a class="navbar-brand" href="{{route('home')}}">
+        <img src="logo.png" alt="Logo" height="45">
       </a>
 
-      <!-- Toggler -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav"
-              aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <!-- Hamburger Button (mobile only) -->
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!-- Navbar Links -->
-      <div class="collapse navbar-collapse justify-content-center" id="mainNav">
-
-        <ul class="navbar-nav mb-2 mb-lg-0 ml-lg-4">
+      <!-- Center Links + Right Button -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto gap-lg-3">
           <li class="nav-item">
-            <a class="nav-link text-dark font-weight-semibold" href="{{route('home.about')}}">À propos</a>
+            <a class="nav-link" href="{{route('home.about')}}">À propos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark font-weight-semibold" href="{{route('home.projects')}}">Projets</a>
+            <a class="nav-link" href="{{route('home.projects')}}">Projets</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark font-weight-semibold" href="{{route('home.formations')}}">Formations</a>
+            <a class="nav-link" href="{{route('home.formations')}}">Formations</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark font-weight-semibold" href="{{route('home.subventions')}}">Subventions</a>
+            <a class="nav-link" href="{{route('home.subventions')}}">Subventions</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark font-weight-semibold" href="{{route('home.contact')}}">Contact</a>
+            <a class="nav-link" href="{{route('home.contact')}}">Contact</a>
           </li>
         </ul>
 
-        <!-- Right Buttons -->
-        <div class="ml-auto d-flex flex-column flex-lg-row align-items-lg-center">
+        <!-- Right Side: Auth Button + Profile Dropdown -->
+        <div class="d-flex align-items-center gap-3">
+          <!-- Sign In / Sign Up Button -->
+           @guest
+          <button id="auth-btn" class="btn btn-primary">
+            <a href="{{route('user.login.view')}}" class="text-white text-decoration-none">Sign In / Sign Up</a>
+          </button>
+          @endguest
 
-        @guest
-          <!-- Sign In / Sign Up -->
-          <a id="auth-btn" href="{{route('user.login.view')}}" class="btn btn-primary mb-2 mb-lg-0 mr-lg-2 text-center">Sign In / Sign Up</a>
-@endguest
-          <!-- Profile Dropdown -->
+          <!-- Profile Dropdown (shown when logged in) -->
            @auth
- <div id="profile-info" class="dropdown mx-auto mx-lg-0">
-            <button class="btn btn-light d-flex align-items-center" type="button" id="profileDropdown"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                    style="border:1px solid rgba(0,0,0,0.2); border-radius:50px; padding:2px 10px;">
-              <img src="{{asset('storage/images/users/'.auth()->user()->picture)}}" alt="Profile" class="rounded-circle mr-2" width="35" height="35">
-              <span>{{auth()->user()->username}}</span>
+          <div id="profile-info" class="dropdown" >
+            <button class="btn btn-light d-flex align-items-center gap-2 border rounded-pill px-3 py-2" 
+                    type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img id="profile-pic" src="images/elon.jpg" alt="Profile" class="rounded-circle" width="36" height="36">
+              <span id="profile-name" class="fw-medium">John Doe</span>
             </button>
-
-            <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="profileDropdown">
-              <a class="dropdown-item" href="{{route('user.profile')}}">Profil</a>
-              <a class="dropdown-item" href="{{route('admin.dashboard')}}">Table de bord</a>
-             
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item text-danger" href="{{route('user.logout')}}">Logout</a>
-            </div>
+            <ul class="dropdown-menu dropdown-menu-end shadow">
+              <li><a class="dropdown-item" href="{{route('user.profile')}}">Profile</a></li>
+              <li><a class="dropdown-item" href="mesprojets.html">Mes Projets</a></li>
+              <li><a class="dropdown-item" href="mesinvestissements.html">Mes Investissements</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="{{route('user.logout')}}">Logout</a></li>
+            </ul>
           </div>
-           @endauth
-         
-
+          @endauth
         </div>
-
       </div>
 
     </div>
@@ -87,11 +86,9 @@
 
 
 
-
 @yield("homeSection")
 
-
-  <!-- footer -->
+   <!-- footer -->
   <footer class="site-footer">
     <div class="footer-container">
       
@@ -126,8 +123,7 @@
         <h1>Newsletter</h1>
         <div class="border"></div>
         <p>Entrez votre email pour recevoir nos actualités.</p>
-        <form action="route('admin.newsletter')" class="newsletter-form" method="post">
-          @csrf
+        <form class="newsletter-form">
           <input type="email" class="txtb" placeholder="Entrez votre email" required>
           <button type="submit" class="btn">S’abonner</button>
         </form>
@@ -135,7 +131,6 @@
   
     </div>
   </footer>
-
 
   
 <script>

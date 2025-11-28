@@ -24,6 +24,7 @@ return new class extends Migration
                 $table->string("picture")->nullable();
                 $table->decimal("reduction")->nullable();
                 $table->string("duration")->nullable();
+                $table->decimal("rate")->nullable();
                 $table->integer("views")->nullable();
                 $table->boolean("status")->default(true);
             $table->timestamps();

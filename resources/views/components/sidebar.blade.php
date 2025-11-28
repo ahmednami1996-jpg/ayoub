@@ -1,159 +1,102 @@
- <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+ <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark  text-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                             <hr class="mx-3" />
+                            <div class="sb-sidenav-menu-heading">Services</div>
+                             <a class="nav-link" href="{{route('admin.users.view')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                                Utilisateurs
+                            </a>
+                            
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProjects" aria-expanded="false" aria-controls="collapseProjects">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tasks"></i></div>
+                                Projects
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseProjects" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{route('projects.view')}}">Voir tous les projets</a>
+                                    <a class="nav-link" href="{{route('project.create')}}">Nouveau projet</a>
+                                </nav>
+                            </div>
+                            <!-- investissements -->
+                               <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseInvest" aria-expanded="false" aria-controls="collapseInvest">
+                                <div class="sb-nav-link-icon"><i class="fas fa-usd"></i></div>
+                                Investissements
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseInvest" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{route('apply.received')}}">Demandes</a>
+                                    <a class="nav-link" hhref="{{route('apply.sent')}}">Candidatures</a>
+                                </nav>
+                            </div>
+                            <!-- chat -->
+                              <a class="nav-link" href="{{route('chat.list')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-sms"></i></div>
+                                Chat
+                            </a>
+                            <!-- formations -->
+                               <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseFormations" aria-expanded="false" aria-controls="collapseFormations">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                                Formations
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseFormations" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{route('formation.view')}}">Voir tous les formations</a>
+                                    <a class="nav-link" href="{{route('formation.create')}}">Nouveau formation</a>
+                                </nav>
 
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
-        <div class="sidebar-brand-icon rotate-n-15">
-         <img class="img img-responsive" src="{{asset('storage/logo.png')}}" style="width:5rem"/>
-        </div>
-        <div class="sidebar-brand-text mx-3">
-         
-        </div>
-      </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-       Services
-      </div>
-  <!-- Nav Item - Projects Collapse Menu -->
-  @if(auth()->user()->hasRole('admin'))
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('admin.users.view')}}">
-          <i class="fas fa-users"></i>
-          <span>Utilisateurs</span></a>
-      </li>
-      @endif
-      <!-- Nav Item - Projects Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProjects" aria-expanded="true" aria-controls="collapseProjects">
-         <i class="fas fa-tasks"></i>
-          <span>Projets</span>
-        </a>
-        <div id="collapseProjects" class="collapse" aria-labelledby="headingProjects" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            
-            <a class="collapse-item" href="{{route('projects.view')}}">Voir tous les projets</a>
-            <a class="collapse-item" href="{{route('project.create')}}">Nouveau projet</a>
-          </div>
-        </div>
-      </li>
-          <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInvestments" aria-expanded="true" aria-controls="collapseInvestments">
-           <i class="fas fa-hand-holding-usd"></i>
-          <span>Investissements</span>
-        </a>
-        <div id="collapseInvestments" class="collapse" aria-labelledby="headingInvestments" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            
-            <a class="collapse-item" href="{{route('apply.received')}}">Demandes</a>
-            <a class="collapse-item" href="{{route('apply.sent')}}">Candidatures</a>
-          </div>
-        </div>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="{{route('chat.list')}}">
-          <i class="fas fa-sms"></i>
-          <span>Chat</span></a>
-      </li>
-       <!-- Nav Item - Formations Collapse Menu -->
-        @if(auth()->user()->hasRole('admin'))
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFormations" aria-expanded="true" aria-controls="collapseFormations">
-          <i class="fas fa-chalkboard-teacher"></i> 
-          <span>Formations</span>
-        </a>
-        <div id="collapseFormations" class="collapse" aria-labelledby="headingFormations" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            
-            <a class="collapse-item" href="{{route('formation.view')}}">Voir tous les formations</a>
-            <a class="collapse-item" href="{{route('formation.create')}}">Nouveau formation</a>
-          </div>
-        </div>
-      </li>
-       <!-- Nav Item - subventions Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSubventions" aria-expanded="true" aria-controls="collapseSubventions">
-           <i class="fas fa-hand-holding-usd"></i>
-          <span>Subventions</span>
-        </a>
-        <div id="collapseSubventions" class="collapse" aria-labelledby="headingSubventions" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            
-            <a class="collapse-item" href="{{route('subvention.view')}}">Voir tous les subventions</a>
-            <a class="collapse-item" href="{{route('subvention.create')}}">Nouveau subvention</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Categories Collapse Menu -->
-     <li class="nav-item">
-        <a class="nav-link" href="{{route('category.view')}}">
-          <i class="fas fa-th-large"></i>
-          <span>Catégories</span></a>
-      </li>
-       <!-- Nav Item - tags Collapse Menu -->
-     <li class="nav-item">
-        <a class="nav-link" href="{{route('tag.view')}}">
-          <i class="fas fa-tags"></i>
-          <span>Tags</span></a>
-      </li>
-     
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Authorisations
-      </div>
-
-      <!-- Nav Item - Roles Collapse Menu -->
-      
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('role.view')}}">
-          <i class="fas fa-user-tag"></i>
-          <span>Rôles</span></a>
-      </li>
-      </li>
-      @endif
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-    <!-- Nav Item - subventions Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProfile" aria-expanded="true" aria-controls="collapseProfile">
-          <i class="fas fa-user"></i>
-          <span>Profil</span>
-        </a>
-        <div id="collapseProfile" class="collapse" aria-labelledby="headingProfile" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            
-            <a class="collapse-item" href="{{route('user.profile')}}">Voir Profil</a>
-            <a class="collapse-item" href="{{route('user.profile.edit')}}">Modifier Profil</a>
-            <a class="collapse-item" href="{{route('user.change.password.edit')}}">Changer mot de passe</a>
-          </div>
-        </div>
-      </li>
-        
-      </li>
-
-     
-
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-
-    </ul>
+                            </div>
+                            <!-- Subventions -->
+                               <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSubventions" aria-expanded="false" aria-controls="collapseSubventions">
+                                <div class="sb-nav-link-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                               Subventions
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseSubventions" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{route('subvention.view')}}">Voir tous les subventions</a>
+                                    <a class="nav-link" href="{{route('subvention.create')}}">Nouveau subvention</a>
+                                </nav>
+                            </div>
+                           
+                             <a class="nav-link" href="{{route('category.view')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-th-large"></i></div>
+                                Catégories
+                            </a>
+                           <a class="nav-link" href="{{route('tag.view')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tags"></i></div>
+                                Tags
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Authorisations</div>
+                            <a class="nav-link" href="{{route('role.view')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user-tag"></i></div>
+                                Rôles
+                            </a>
+                            <hr  class="mx-3">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProfile" aria-expanded="false" aria-controls="collapseProfile">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                                Profil
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseProfile" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{route('user.profile')}}">Voir Profil</a>
+                                    <a class="nav-link" href="{{route('user.profile.edit')}}">Modifier Profil</a>
+                                    <a class="nav-link" href="{{route('user.change.password.edit')}}">Changer mot de passe</a>
+                                </nav>
+                            </div>
+                            
+                        </div>
+                    </div>
+                   
+                </nav>
+            </div>

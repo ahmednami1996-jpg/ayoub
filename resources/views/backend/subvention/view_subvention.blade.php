@@ -47,7 +47,7 @@
              <td>
                 <form action="{{route('subvention.change.status',$subvention->id)}}" method="post">
                     @csrf
-                <button class="btn {{ $subvention->status==true ?'btn-danger':'btn-success'}}"> {{ $subvention->status == true ?"Désactiver" : "Activer" }}</button>
+                <button class="btn w-100 {{ $subvention->status==true ?'btn-danger':'btn-success'}}"> {{ $subvention->status == true ?"Désactiver" : "Activer" }}</button>
                 </form>
              </td>
              <td class="text-center">

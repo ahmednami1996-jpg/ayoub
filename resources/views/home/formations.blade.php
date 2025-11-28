@@ -7,29 +7,26 @@
 <x-banner title="Formations" />
 
 
+
 <!-- Section: Formations Grid -->
 <section class="formation py-5">
-    <!-- Title -->
 
     <!-- Cards Grid -->
     <div class="container">
-        @if(isset($formations) && $formations->count() >0)
-
+        @if(isset($formations) && $formations->count()>0)
 
         <div class="row">
-            @foreach($formations as $key => $formation)
-
-
-            <div class="col-12 col-md-4 mb-3">
+           @foreach($formations as $key => $formation)
+            <!-- Card 1 -->
+            <div class="col-12 col-sm-6 col-lg-4 mb-4">
                 <div class="card h-100 shadow-sm position-relative">
-                    <img src="{{asset('storage/images/formations/'.$formation->picture)}}" class="card-img-top"
-                        alt="Projet {{$key}}">
+                    <img src="{{asset('storage/images/formations/'.$formation->picture)}}" class="card-img-top" alt="Projet {{$key}}">
                     <div class="card-image-overlay">
-                        @if(filled($formation->mode) && isset($formation->mode))
+                         @if(filled($formation->mode) && isset($formation->mode))
                         <span class="badge-top">{{$formation->mode == 1 ? 'En ligne' : 'Présentiel'}}</span>
                         @endif
                         @if(filled($formation->duration) && isset($formation->duration))
-                        <span class="badge-bottom">{{$formation->duration ??""}}</span>
+                        <span class="badge-bottom">{{$formation->duration}}</span>
                         @endif
                     </div>
                     <div class="card-body d-flex flex-column">
@@ -50,55 +47,58 @@
                         <div class="price-buy-row mt-3 d-flex justify-content-between align-items-center">
                             <div class="price-group">
                                 <span class="price-now">{{'$'.$formation->cost ??""}}</span>
-                                @if(filled($formation->reduction))
-                                <span class="price-old">{{'$'.$formation->reduction ??""}}</span>
+                                @if(filled($formation->reduction) && isset($formation->reduction))
+                                <del>${{ $formation->reduction}}</del>
                                 @endif
                             </div>
                             <div class="buy-rating-group d-flex flex-column align-items-end gap-1">
-                                <!-- <div class="rating d-flex align-items-center gap-1">
-                    <span id="likeNumber" class="rating-num">{{$formation->like}}</span>
-                    
-                    <i id="like" class="far fa-heart"></i>
-                  </div> -->
-                                <a href="{{route('home.formation',$formation->id)}}" target="_blank"
-                                    class="btn-buy">Acheter</a>
+                                <div class="rating d-flex align-items-center gap-1">
+                                    <span class="rating-num">{{$formation->rate}}</span>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <a href="{{route('home.formation',$formation->id)}}" target="_blank"  class="btn-buy">Acheter</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+
             @endforeach
-            </div>
-         <div class="row justify-content-center text-center">
-    <div class="col-12">
-        <nav>
-            <ul class="pagination justify-content-center  mt-4">
-                {{ $formations->links('pagination::bootstrap-4') }}
-            </ul>
-        </nav>
-    </div>
-</div>
-@else
-<div class="row">
-  <div class="col"><div class="alert alert-danger">
-            Aucune formation n’existe
-        </div></div>
-</div>
-        
-        @endif
+
+
+
 
         </div>
 
 
 
+        <div class="row justify-content-center text-center">
+            <div class="col">
+                <nav>
+                    <ul class="pagination justify-content-center  mt-4">
+                        {{ $formations->links('pagination::bootstrap-4') }}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        @else
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-info">Aucune formation n’existe</div>
+            </div>
+        </div>
+        @endif
+
+    </div>
 </section>
 
 
 
 
 
-        
-    </div>
+
 
 
 @endsection

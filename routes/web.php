@@ -16,6 +16,9 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\home\HomeController;
 use App\Http\Controllers\admin\LocationController;
 /*------------------ public routes -------------------*/
+Route::get("/tez",function(){
+    return view("layouts.inde");
+});
 Route::middleware(['guest'])->group(function () {
 Route::get('/',function(){return view("layouts.home_master");});
 Route::get("/logout",[UserController::class,'logout'])->name("user.logout");

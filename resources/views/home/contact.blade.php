@@ -44,11 +44,11 @@
 
           <form action="{{route('home.contactUs')}}" method="post">
             @csrf
-              <input type="text" name="name" placeholder="Entrez votre nom" required>
-              <input type="email" name="email" placeholder="Entrez votre Email" required>
-              <input type="text" name="subject" placeholder="Entrez votre message" required>
+              <input type="text" name="name" placeholder="Enter your name" required>
+              <input type="email" name="email" placeholder="Enter Email" required>
+              <input type="text" name="password" placeholder="Enter your subject" required>
               <textarea rows="8" name="message" placeholder="Message" required></textarea>
-              <button type="submit" class="hero-btn">Envoyer Email</button>
+              <button type="submit" class="hero-btn">Send Message</button>
           </form>
 
       </div>
