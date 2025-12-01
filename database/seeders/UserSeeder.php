@@ -15,23 +15,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
          // Créer un utilisateur
-        $user = User::firstOrCreate(
-            ['email' => 'admin@example.com'],
-            [
-                'firstname' => 'Super',
-                'lastname' => 'admin',
-                "picture"=>"no-image.png",
-                'username' => 'admin',
-                'email'=>"admin@admin.com",
-                'password' => Hash::make('admin123456'),
-            ]
-        );
-
-        // Rôles à affecter
-        $roles = Role::whereIn('name', ['admin', 'user'])->pluck('id');
-
-        // Attacher plusieurs rôles
-        $user->roles()->sync($roles);
+       
 
     }
 }
