@@ -11,8 +11,13 @@ class TagController extends Controller
 {
     
     public function index(){
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
     
-    $tags=Tag::all();
+    $tags=Tag::orderBy('created_at', 'desc')->get();
 
      return view('backend.tag.view_tag',compact('tags'));
     }
@@ -20,6 +25,11 @@ class TagController extends Controller
 
 
     public function store(Request $request){
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
        
         $validation=$request->validate(["name"=>"required|unique:tags,name"]);
         $tag=new Tag();
@@ -30,7 +40,11 @@ class TagController extends Controller
     }
 
     public function edit($id){
-       
+         if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
         
         try{
         $tag=Tag::findOrFail($id); 
@@ -51,7 +65,11 @@ class TagController extends Controller
     }
 
     public function update(Request $request,$id){
+  if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
 
+        }
        $request->validate([
         'name' => [
             'required',
@@ -82,7 +100,11 @@ class TagController extends Controller
 
 
     public function destroy($id){
-       
+         if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
        try {
         $tag = Tag::findOrFail($id);
         $tag->delete();

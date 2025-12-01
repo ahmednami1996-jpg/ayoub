@@ -24,7 +24,6 @@ window.Swal = Swal; // Make it globally accessible
 
 
 
-console.log(TomSelect)
   document.addEventListener("DOMContentLoaded", function() {
       const tags = document.querySelector('#tags');
       const roles = document.querySelector('#roles');
@@ -39,6 +38,15 @@ new TomSelect(roles, {
             plugins: ['remove_button']
         });
     }
+    document.querySelectorAll('.toggle-password').forEach(icon => {
+    icon.addEventListener('click', function () {
+      const input = this.previousElementSibling;
+      const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+      input.setAttribute('type', type);
+      this.classList.toggle('bi-eye-slash');
+      this.classList.toggle('bi-eye');
+    });
+  });
     
     document.addEventListener("click", function (e) {
   // Check if the clicked element has id="delete"

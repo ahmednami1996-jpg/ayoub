@@ -10976,12 +10976,14 @@ body {
   margin: 0;
 }
 .sb-topnav.navbar-dark #sidebarToggle {
-  color: rgba(255, 255, 255, 0.5);
+  color: #00adef;
 }
 .sb-topnav.navbar-light #sidebarToggle {
-  color: #212529;
+  color: #00adef;
 }
-
+#navbarDropdown{
+  color:#00adef;
+}
 .sb-sidenav {
   display: flex;
   flex-direction: column;

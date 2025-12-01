@@ -14,8 +14,12 @@ class SubventionController extends Controller
 {
     
  public function index(){
-    
-    $subventions=Subvention::all();
+      if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
+    $subventions=Subvention::orderBy('created_at', 'desc')->get();
 
      return view('backend.subvention.view_subvention',compact('subventions'));
     }
@@ -28,13 +32,19 @@ class SubventionController extends Controller
         
     }
 public function create(){
+      if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
      $countries = Countries::getList('en');
     unset($countries['IL']);
     return view("backend.subvention.create_subvention",compact('countries'));
 }
 public function show($id){
     $subvention=Subvention::findOrFail($id);
-    $subvention->views = $subvention->views + 1;
+   
+    $subvention->views = $subvention->getView() + 1;
 $subvention->save();
 
     return redirect()->away($subvention->url);
@@ -42,6 +52,11 @@ $subvention->save();
 
 
     public function store(Request $request){
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
        
         $request->validate(["file"=>"required",
         "title"=>"required",
@@ -72,7 +87,11 @@ $subvention->save();
     }
 
     public function edit($id){
-       
+         if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
         
         try{
         $subvention=Subvention::findOrFail($id); 
@@ -95,6 +114,11 @@ $subvention->save();
     }
 
     public function update(Request $request,$id){
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
 
        $request->validate([
         "title"=>"required","eligibilities"=>"required","country"=>"required","organization"=>"required",
@@ -143,6 +167,11 @@ return redirect()->route("subvention.view")->with($notification);
 
 
     public function destroy($id){
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
        
        try {
         $subvention = Subvention::findOrFail($id);
@@ -167,6 +196,11 @@ return redirect()->route("subvention.view")->with($notification);
     }
 
     public function changeStatus($id){
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
         try{
             $subvention=Subvention::findOrFail($id);
             $subvention->status= !$subvention->status;

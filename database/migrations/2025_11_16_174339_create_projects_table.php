@@ -28,6 +28,8 @@ return new class extends Migration
             $table->decimal("annual_revenue")->nullable();
             $table->decimal("retention_rate_p")->nullable();
             $table->integer("views")->default(0);
+            $table->String("country")->nullable();
+            $table->String("city")->nullable();
             
             
 

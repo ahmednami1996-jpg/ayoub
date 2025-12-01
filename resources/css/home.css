@@ -29,7 +29,7 @@ header #auth-btn {
 }
 
 header #auth-btn:hover {
-  background-color: transparent;
+  background-color: #fff;
   color: #00adef !important;
 }
 

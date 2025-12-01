@@ -13,6 +13,7 @@
             <div class="card-body">
                 <ul class="list-group">
                     @if($chats->count()>0)
+                 
                     @foreach($chats as $chat)
 
 

@@ -16,7 +16,7 @@
 
 
 
-<div class="form-group">
+<div class="form-group mb-3">
     <label for="username">Nom d'utilisateur</label>
     <input type="text" value="{{$user->username}}" name="username" class="form-control @error('username') is-invalid @enderror" disable/>
     @error('username')
@@ -24,7 +24,7 @@
     @enderror
 </div>
 
-<div class="form-group">
+<div class="form-group mb-3">
     <label for="roles">Rôles</label>
     <select class="form-control @error('roles') is-invalid @enderror" id="roles" name="roles[]" multiple>
         @foreach($roles as $role)
@@ -41,7 +41,7 @@
 
 
 
-<div class="form-group mt-5">
+<div class="form-group">
     <button class="btn btn-success ">Modifier</button>
 </div>
 

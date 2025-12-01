@@ -15,7 +15,7 @@
 @csrf
 
 
-<div class="form-group">
+<div class="form-group mb-3">
     <label for="role">Nom de rôle</label>
     <input type="text" value="{{$role->name}}" name="name" class="form-control @error('name') is-invalid @enderror"/>
     @error('name')

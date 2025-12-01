@@ -15,7 +15,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories=Category::all();
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
+        $categories=Category::orderBy('created_at', 'desc')->get();
         return view('backend.category.view_category',compact('categories'));
     }
 
@@ -24,6 +29,11 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
         $notification="";
         $validation=$request->validate(["name"=>"required|unique:categories,name"]);
    
@@ -43,6 +53,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
         try{
  $category=Category::findOrFail($id);
  return view("backend.category.edit_category",compact("category"));
@@ -59,6 +74,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
          $request->validate([
         
         'name' => [
@@ -89,6 +109,11 @@ $category->name=$request->name;
      */
     public function destroy($id)
     {
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
         try{
             $category=Category::findOrFail($id); 
             $category->delete();

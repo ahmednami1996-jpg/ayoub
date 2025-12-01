@@ -7,14 +7,14 @@
 
     <div class="col-12">
 
-        <h5>Create formation</h5>
+        <h5>Créer une formation</h5>
 
 
 
         <form action="{{route('formation.store')}}" method="post" enctype="multipart/form-data">
 
             @csrf
-           <div class="row">
+           <div class="row mb-3">
                 <div class="col-12 d-flex justify-content-center">
                     <div class="form-group text-center mx-auto">
                         <div class="text-center">
@@ -27,7 +27,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="title">Titre de formation </label>
@@ -42,7 +42,7 @@
                     <div class="form-group">
                         <label for="category">Catégories</label>
                         <select name="category_id" id="" class="form-control w-md-25">
-                            <option value="" disabled selected>---toutes les Catégories---</option>
+                            <option value="" disabled selected>--- toutes les Catégories ---</option>
                             @foreach($categories as $key => $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
@@ -53,7 +53,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="provider">Fournisseur</label>
@@ -76,11 +76,11 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="mode" class="form-label">Mode</label>
                     <select name="mode" class="form-control">
-                        <option selected diabled>--- Les modes---</option>
+                        <option selected diabled>--- Les modes ---</option>
                         <option class="online">En ligne</option>
                         <option class="inperson">Présentiel</option>
 
@@ -97,7 +97,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="cost" class="form-label">Frais</label>
                     <input type="text" class="form-control @error('cost') is-invalid @enderror" name="cost" placeholder="Entrez les frais de formation"/>
@@ -114,10 +114,16 @@
                 </div>
                 
             </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="rate">Evaluation</label>
+                    <input type="number" name="rate" class="form-control" placeholder="Entrez l'évalution ex: 4.5 ">
+                </div>
+            </div>
             
 
 
-            <div class="form-group mt-2">
+            <div class="form-group">
                 <button class="btn btn-success ">Ajouter</button>
             </div>
 

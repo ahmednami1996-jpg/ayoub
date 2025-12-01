@@ -11,6 +11,10 @@ class Subvention extends Model
         'views','eligibilities'
         
     ];
+    public function getView(){
+    return $this->attributes['views'];
+}
+
 public function setUrlAttribute($value)
 {
     if (!str_starts_with($value, 'http://') && !str_starts_with($value, 'https://')) {

@@ -20,12 +20,12 @@ class ProjectController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    { 
         $user=auth()->user();
         if($user->hasRole("admin")){
-          $projects=Project::all();
+          $projects=Project::orderBy('created_at', 'desc')->get();
         }else{
-           $projects=Project::where("user_id",$user->id)->get();  
+           $projects=Project::where("user_id",$user->id)->orderBy('created_at', 'desc')->get();  
         }
        
 
@@ -39,9 +39,11 @@ class ProjectController extends Controller
     public function create()
     {
         if(Auth::check()){
+              $countries = Countries::getList('en');
+    unset($countries['IL']);
             $categories=Category::all();
         $tags=Tag::all();
-        return view("backend.project.create_project",compact('categories','tags')); 
+        return view("backend.project.create_project",compact('categories','tags','countries')); 
         }else{
             return redirect()->route('user.login.view');
         }
@@ -70,6 +72,8 @@ class ProjectController extends Controller
        $project->retention_rate_p=$request->retention_rate_p;
        $project->is_taken=0;
        $project->category_id=$request->category_id;
+       $project->country=$request->country;
+       $project->city=$request->city;
        
        $project->user_id=auth()->user()->id;
        
@@ -216,11 +220,13 @@ return view('home.projects', compact('projects', 'categories', 'countries'));
     public function edit($id)
     {
           try{
+             $countries = Countries::getList('en');
+    unset($countries['IL']);
         $project=Project::findOrFail($id);
         $categories=Category::all();
         $tags=Tag::all();
        
-            return view("backend.project.edit_project",compact("project","tags","categories"));
+            return view("backend.project.edit_project",compact("project","tags","categories","countries"));
        
       
        }catch(ModelNotFoundException $e){
@@ -244,6 +250,8 @@ return view('home.projects', compact('projects', 'categories', 'countries'));
        $project->resume=$request->resume;
        $project->budget=$request->budget;
        $project->market=$request->market;
+        $project->country=$request->country;
+       $project->city=$request->city;
       
        $project->investment_type=$request->investment_type;
        $project->kpi_users=$request->kpi_users;

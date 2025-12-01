@@ -15,7 +15,7 @@
 @csrf
 
 
-<div class="form-group">
+<div class="form-group mb-3">
     <label for="currentPassword">Mot de passe actuel</label>
     <input type="password"  name="current_password" class="form-control @error('current_password') is-invalid @enderror"/>
     @error('current_password')
@@ -23,7 +23,7 @@
     @enderror
 
 </div>
-<div class="form-group">
+<div class="form-group mb-3">
     <label for="password">Nouveau mot de passe</label>
     <input type="password"  name="password" class="form-control @error('password') is-invalid @enderror"/>
     @error('password')
@@ -31,7 +31,7 @@
     @enderror
 
 </div>
-<div class="form-group">
+<div class="form-group mb-3">
     <label for="confirmPassword">Confirmer le mot de passe</label>
     <input type="password"  name="password_confirmation" class="form-control @error('password') is-invalid @enderror"/>
 

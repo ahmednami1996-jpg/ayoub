@@ -10,11 +10,11 @@
       <img src="{{asset('storage/images/users/'.auth()->user()->picture)}}" class="profile-img" alt="Profile Picture" style="width:14rem;height:14rem">
       <div class="mt-3 text-start">
        
-        <div class="info-section">
+        <div class="info-section text-center">
           <h6>Rôles</h6>
           <div class="roles">
             @foreach(auth()->user()->roles as $role)
- <span class="badge badge-pill badge-primary p-3">{{$role->name}}</span>
+ <span class="badge rounded-pill text-bg-primary p-3">{{$role->name}}</span>
 
 
             @endforeach

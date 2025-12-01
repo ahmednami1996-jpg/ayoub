@@ -14,8 +14,13 @@ use Illuminate\Support\Facades\Storage;
 class FormationController extends Controller
 {
  public function index(){
+      if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
     
-    $formations=Formation::all();
+    $formations=Formation::orderBy('created_at', 'desc')->get();
 
      return view('backend.formation.view_formation',compact('formations'));
     }
@@ -29,13 +34,19 @@ class FormationController extends Controller
     }
    public function show($id){
     $formation=Formation::findOrFail($id);
-    $formation->views = $formation->views + 1;
+    
+    $formation->views = ($formation->getView()?? 0) + 1;
 $formation->save();
 
     return redirect()->away($formation->url);
    }
 
     public function create(){
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
 
        $categories=Category::all();
         return view("backend.formation.create_formation",compact('categories'));
@@ -44,6 +55,11 @@ $formation->save();
 
 
     public function store(Request $request){
+        if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
         $notification="";
         $validation=$request->validate(["title"=>"required","cost"=>"numeric|required","provider"=>"required","url"=>"required|unique:formations,url"]);
         $formation=new Formation();
@@ -54,6 +70,7 @@ $formation->save();
         $formation->reduction=$request->reduction ?? null;
         $formation->duration=$request->duration?? 'undefined';
         $formation->category_id=$request->category_id ?? null;
+        $formation->rate=$request->rate;
         $formation->status=1;
         $formation->url=$request->url;
         if($request->hasFile('picture')){
@@ -73,6 +90,11 @@ $formation->save();
     }
 
     public function edit($id){
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
        
         
         try{
@@ -95,6 +117,11 @@ $formation->save();
     }
 
     public function update(Request $request,$id){
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
 
        $request->validate([
         "title"=>"required","provider"=>"required","cost"=>"numeric|required",
@@ -114,6 +141,8 @@ $formation->save();
         $formation->duration=$request->duration;
         $formation->category_id=$request->category_id;
         $formation->url=$request->url;
+        $formation->rate=$request->rate;
+
       
        if ($request->hasFile('picture')) {
 
@@ -164,6 +193,11 @@ $formation->save();
 
 
     public function destroy($id){
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
        
        try {
         $formation = Formation::findOrFail($id);
@@ -187,6 +221,11 @@ $formation->save();
     }
 
     public function changeStatus($id){
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
         try{
             $formation=Formation::findOrFail($id);
             $formation->status= !$formation->status;

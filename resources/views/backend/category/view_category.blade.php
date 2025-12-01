@@ -27,7 +27,7 @@
     </div>
 
 
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6">
         <h4>Liste des catégories</h4>
         <div class="table-responsive">
             <table class="table table-hover table-bordered">

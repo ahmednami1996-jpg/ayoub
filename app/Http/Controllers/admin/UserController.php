@@ -32,6 +32,7 @@ class UserController extends Controller
   
 public function profile(){
    $user=auth()->user();
+   
    return view("backend.user.view_profile",compact("user"));
    
 }

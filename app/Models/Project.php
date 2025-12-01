@@ -23,11 +23,7 @@ class Project extends Model
     public function documents(){
         return $this->hasMany(Document::class);
     }
-    public function applicants()
-{
-    return $this->belongsToMany(User::class, 'applies')
-                ->withTimestamps();
-}
+
 public function tags()
 {
     return $this->belongsToMany(Tag::class, 'project_tag')

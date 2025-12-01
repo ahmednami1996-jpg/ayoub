@@ -4,7 +4,7 @@
 
 <div class="row">
 
-    <div class="col-lg-12 col-md-6">
+    <div class="col-lg-12">
 
         <h5>Ajouter projet</h5>
 
@@ -13,7 +13,7 @@
         <form action="{{route('project.store')}}" method="post" enctype="multipart/form-data">
 
             @csrf
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-12 d-flex justify-content-center">
                     <div class="form-group text-center mx-auto">
                         <div class="text-center">
@@ -52,6 +52,34 @@
                     @enderror
 
 
+                </div>
+            </div>
+            <div class="row mb-3">
+                 <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="country">Pays</label>
+                        <select name="country" class="form-control w-md-25 @error('country') is-invalid @enderror" id="country">
+                            <option value="" disable selected>--- tous les pays ---</option>
+                            @foreach($countries as $code => $name)
+                            <option value="{{$name}}">{{$name}}</option>
+
+                            @endforeach
+                        </select>
+                        @error('country')
+                        <span class="invalid-feedback">{{$message}}</span>
+                        @enderror
+
+                    </div>
+                </div>
+                 <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="city">Ville</label>
+                        <input type="text" name="city" placeholder="Entrez la ville " placeholder="Enter your city @error('city') is-invalid @enderror" class="form-control">
+                        @error('city')
+                        <span class="invalid-feedback">{{$message}}</span>
+                        @enderror
+
+                    </div>
                 </div>
             </div>
             <div class="row mb-3">
@@ -122,15 +150,15 @@
                     <label for="investment_type" class="form-label">Type d'investissement</label>
                     <select class="form-control @error('investment_type') is-invalid @enderror" id="investment_type"
                         name="investment_type">
-                        <option value="">-- All Types --</option>
-                        <option value="financial">Investissement financier</option>
-                        <option value="materiel">Investissement matériel</option>
-                        <option value="immateriel">Investissement immatériel</option>
-                        <option value="human">Investissement humain</option>
-                        <option value="technology">Investissement technologique</option>
-                        <option value="commercial">Investissement commercial</option>
-                        <option value="operational">Investissement opérationnel</option>
-                        <option value="strategic">Investissement stratégique</option>
+                        <option value="">-- Tous les types --</option>
+                        <option value="investissement financier">Investissement financier</option>
+                        <option value="investissement matériel">Investissement matériel</option>
+                        <option value="investissement immatériel">Investissement immatériel</option>
+                        <option value="investissement humain">Investissement humain</option>
+                        <option value="investissement technologique">Investissement technologique</option>
+                        <option value="investissement commercial">Investissement commercial</option>
+                        <option value="investissement opérationnel">Investissement opérationnel</option>
+                        <option value="investissement stratégique">Investissement stratégique</option>
                     </select>
                     @error('investment_type')
                     <span class="invalid-feedback">{{$message}}</span>
@@ -143,7 +171,7 @@
                 <div class="col-md-6">
                     <label for="kpi_users" class="form-label">Utilisateurs actifs</label>
                     <input type="number" class="form-control @error('kpi_users') is-invalid @enderror" id="kpi_users"
-                        name="kpi_users" placeholder="Enter KPI users">
+                        name="kpi_users" placeholder="Entrer Utilisateurs actifs">
                     @error('kpi_users')
                     <span class="invalid-feedback">{{$message}}</span>
                     @enderror
@@ -152,7 +180,7 @@
                     <label for="monthly_growth_p" class="form-label">Croissance mensuelle</label>
                     <input type="number"  min="0" max="100"
                         class="form-control @error('monthly_growth_p') is-invalid @enderror" id="monthly_growth_p"
-                        name="monthly_growth_p" placeholder="Entrer Croissance mensuelle percentage">
+                        name="monthly_growth_p" placeholder="Entrer Croissance mensuelle pourcentage">
                     @error('monthly_growth_pr')
                     <span class="invalid-feedback">{{$message}}</span>
                     @enderror

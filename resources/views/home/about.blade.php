@@ -1,9 +1,10 @@
+
 @extends("layouts.home_master")
 
 @section("homeSection")
 
 
- <x-banner title="A props" />
+ <x-banner title="A propos" />
 
 
 
@@ -17,7 +18,7 @@
           <!-- Text Left -->
           <div class="col-12 col-md-6">
             <h3 class="fw-bold mb-3">Notre mission</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Connecter les porteurs de projets aux investisseurs, faciliter la croissance des idées innovantes et créer un écosystème dynamique où l’entrepreneuriat et le financement se rencontrent pour générer un impact réel et durable.</p>
           </div>
           <!-- Image Right -->
           <div class="col-12 col-md-6">
@@ -35,7 +36,7 @@
 <section class="team py-5">
   <div class="container">
     <!-- Section Title -->
-    <h1 class="text-center mb-5">Our Team</h1>
+    <h1 class="text-center mb-5">Equipe</h1>
     
     <div class="row g-4">
       <!-- Team Member 1 -->
@@ -43,7 +44,7 @@
         <div class="card text-center p-4">
           <img src="{{asset('storage/images/static/elon.jpg')}}" class="profile-img mx-auto d-block" style="width:120px; height:120px;" alt="Luna Turner">
           <h3 class="fw-bold">Luna Turner</h3>
-          <p class="text-uppercase text-muted">Founder</p>
+          <p class="text-uppercase text-muted">Fondateur</p>
           <div class="team-icons">
             <a href="#"><i class="fab fa-instagram fa-lg"></i></a>
             <a href="#"><i class="fab fa-linkedin fa-lg"></i></a>
@@ -57,7 +58,7 @@
         <div class="card text-center p-4">
           <img src="{{asset('storage/images/static/elon.jpg')}}" class="profile-img mx-auto d-block" style="width:120px; height:120px;" alt="Bryant Hall">
           <h3 class="fw-bold">Bryant Hall</h3>
-          <p class="text-uppercase text-muted">Developer</p>
+          <p class="text-uppercase text-muted">Développeur</p>
           <div class="team-icons">
             <a href="#"><i class="fab fa-instagram fa-lg"></i></a>
             <a href="#"><i class="fab fa-linkedin fa-lg"></i></a>
@@ -71,7 +72,7 @@
         <div class="card text-center p-4">
           <img src="{{asset('storage/images/static/elon.jpg')}}" class="profile-img mx-auto d-block" style="width:120px; height:120px;" alt="Hope Watkins">
           <h3 class="fw-bold">Hope Watkins</h3>
-          <p class="text-uppercase text-muted">Designer</p>
+          <p class="text-uppercase text-muted">Comptable</p>
           <div class="team-icons">
             <a href="#"><i class="fab fa-instagram fa-lg"></i></a>
             <a href="#"><i class="fab fa-linkedin fa-lg"></i></a>

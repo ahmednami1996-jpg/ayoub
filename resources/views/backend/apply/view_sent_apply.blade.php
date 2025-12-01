@@ -3,13 +3,13 @@
 @section("adminSection")
 
 <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Page des candidature</h1>
+          <h1 class="h3 mb-4 text-gray-800">Page des candidatures</h1>
 <div class="row">
 
 
 
 
-<div class="col-lg-12 col-md-6">
+<div class="col-lg-12">
     <h4>Mes candidatures</h4>
       <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -17,7 +17,7 @@
             <tr>
                 <th>Id</th>
 <th>Nom de l’innovateur</th>
-<th>Informations sur le projet</th>
+<th>Informations du projet</th>
 <th>Message</th>
 <th>Montant</th>
 <th>Statut</th>
@@ -34,7 +34,9 @@
                 </td>
              <td>{{$application->message}}</td>
              <td>{{$application->amount}}</td>
-             <td>{{$application->status}}</td>
+             <td>  {{$application->status=="accepted"  ? "accepté": ""}}
+                {{$application->status=="pending"  ? "en attente": ""}}
+                {{$application->status=="rejected"  ? "rejeté": ""}}</td>
              <td class="text-center">
 <a href="{{route('chat',$application->project->user->id)}}" class="btn btn-primary">Message</a>
 

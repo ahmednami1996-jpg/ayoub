@@ -5,7 +5,7 @@
 @endphp
  <nav class="sb-topnav navbar navbar-expand  " >
             <!-- Navbar Brand-->
-            <a class="navbar-brand py-1 text-center " href="index.html" id="adminLogo" >
+            <a class="navbar-brand py-1 text-center " href="{{route('home')}}" id="adminLogo" >
                 <img src="{{asset('storage/logo-bright.png')}}" style="width:150px;height:50px;" alt="">
             </a>
             <!-- Sidebar Toggle-->

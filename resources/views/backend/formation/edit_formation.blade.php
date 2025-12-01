@@ -15,7 +15,7 @@
         <form action="{{route('formation.update',$formation->id)}}" method="post" class="mt-3" enctype="multipart/form-data">
 
             @csrf
- <div class="row">
+ <div class="row mb-3">
                 <div class="col-12 d-flex justify-content-center">
                     <div class="form-group text-center mx-auto">
                         <div class="text-center">
@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="title">Titre de la formation</label>
@@ -56,7 +56,7 @@
             </div>
 
 
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="provider">Fournisseur</label>
@@ -78,7 +78,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="mode" class="form-label">Mode</label>
                     <select name="mode" class="form-control">
@@ -100,7 +100,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="cost" class="form-label">Frais</label>
                     <input type="text" value="{{$formation->cost}}" class="form-control @error('cost') is-invalid @enderror" name="cost" />
@@ -117,10 +117,15 @@
                 </div>
 
             </div>
-          
+          <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="rate">évaluer</label>
+                    <input type="number" name="rate" value="{{$formation->rate}}" class="form-control">
+                </div>
+            </div>
 
 
-            <div class="form-group mt-2">
+            <div class="form-group">
                 <button class="btn btn-success ">Modifier</button>
             </div>
 

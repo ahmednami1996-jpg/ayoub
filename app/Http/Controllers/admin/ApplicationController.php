@@ -9,21 +9,20 @@ use App\Models\Project;
 class ApplicationController extends Controller
 {
     public function showSentApplications(){
-        $applications=Application::where("user_id",auth()->id())->get();
+        $applications=Application::where("user_id",auth()->id())->orderBy('created_at', 'desc')->get();
         return view("backend.apply.view_sent_apply",compact('applications'));
     }
     public function showReceivedApplications(){
        $applications = Application::whereHas('project', function($q){
         $q->where('user_id', auth()->id());
-    })->get();
+    })->orderBy('created_at', 'desc')->get();
 return view("backend.apply.view_received_apply",compact('applications'));
     }
 
     public function create($id){
         $project=Project::find($id);
         if(auth()->id() != $project->user_id){
-
-return view('backend.apply.create_apply',compact('id'));
+        return view('backend.apply.create_apply',compact('id'));
         }else{
             $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"error");
             return back()->with($notification);
@@ -36,7 +35,7 @@ return view('backend.apply.create_apply',compact('id'));
         'amount' => 'nullable|numeric',
         'message' => 'nullable|string',
     ]);
-
+   
     $application = Application::updateOrCreate(
         [
             'user_id' => auth()->id(),
@@ -54,14 +53,12 @@ $notification=array("message"=>"Votre candidature a été envoyée avec succès.
 
 public function edit($id){
     $application=Application::findOrFail($id);
-     if(auth()->id()==$application->user_id){
+    
         
        return view("backend.apply.edit_apply",compact("application"));
-    }else{
-        $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"error");
-            return back()->with($notification);
+    
        
-    }
+    
     
 }
 public function update (Request $request,$id){

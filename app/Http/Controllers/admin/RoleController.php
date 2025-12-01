@@ -15,7 +15,12 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles=Role::all();
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
+        $roles=Role::orderBy('created_at', 'desc')->get();
         return view('backend.role.view_role',compact('roles'));
     }
 
@@ -26,6 +31,11 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
         $notification="";
         $validation=$request->validate(["name"=>"required|unique:roles,name"]);
       
@@ -47,7 +57,11 @@ class RoleController extends Controller
     public function edit($id)
     {
         
-        
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
 
 
         try{
@@ -65,6 +79,11 @@ return view("backend.role.edit_role",compact("role"));
      */
     public function update(Request $request, $id)
     {
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
         $request->validate([
         'name' => [
             'required',
@@ -96,6 +115,11 @@ return redirect()->route("role.view")->with($notification);
      */
     public function destroy($id)
     {
+          if(!auth()->user()->hasRole('admin')){
+            $notification=array("message"=>"vous ne pouvez pas accéder à cette page","alert-type"=>"warning");
+         return redirect()->back()->with($notification);
+
+        }
         try{
          $role=Role::findOrFail($id); 
          $role->delete();

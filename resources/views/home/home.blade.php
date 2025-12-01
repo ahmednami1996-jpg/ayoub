@@ -15,8 +15,8 @@
           <div class="col-md-6 hero-grid">
              <div class="full">
                 <div class="slide_cont">
-                   <h2>Familiarize Your Creative Application</h2>
-                   <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium..!</p>
+                    <h2>Créer, Investir, Réussir Ensemble</h2>
+                   <p>Nous connectons projets ambitieux et investisseurs sérieux pour transformer vos idées en succès.</p>
                    <div class="full slide_bt"> <a class="white_bt bt_main" href="{{route('home.projects')}}">Découvrir les projets</a> </div>
                    <div class="full slide_bt"> <a class="white_bt bt_main" href="{{route('project.create')}}">Publier un projet</a> </div>
                 </div>
@@ -88,13 +88,13 @@
     <div class="row align-items-center">
       <!-- Left Text Column -->
       <div class="col-md-6 mb-4 mb-md-0">
-        <h1>Learn With Us, Grow With <br> Confidence</h1>
+         <h1>Découvrez des Projets Innovants,<br> Investissez en Confiance</h1>
         <p>
-          We provide high-quality education and training programs designed to
-          help you achieve your goals. Join thousands of learners who trust our
-          expertise and commitment to excellence.
+          Nous présentons une sélection unique de projets prometteurs créés par des entrepreneurs ambitieux.
+           Rejoignez une communauté engagée qui fait confiance à notre plateforme pour connecter idées,
+           financements et opportunités réelles de croissance.
         </p>
-        <a href="#formations" class="hero-btn blue-btn">Discover More</a>
+        <a href="{{route('home.projects')}}" class="hero-btn blue-btn">Découvrir les Projets</a>
       </div>
 
       <!-- Right Image Column -->
@@ -184,131 +184,62 @@
   <div class="container">
     <div class="row g-4">
 
-      <!-- Card 1 -->
-      <div class="col-12 col-sm-6 col-lg-4 mb-4">
-        <div class="card h-100 shadow-sm position-relative">
-          <img src="images/compta.png" class="card-img-top" alt="Projet 1">
-          <div class="card-image-overlay">
-            <span class="badge-top">En ligne</span>
-            <span class="badge-bottom">3 mois</span>
-          </div>
-          <div class="card-body d-flex flex-column">
-            <div class="info-row d-flex justify-content-between align-items-center mb-2">
-              <div class="views d-flex align-items-center gap-2">
-                <i class="bi bi-eye"></i>
-                <span>35k Vues</span>
-              </div>
-              <div class="duration d-flex align-items-center gap-2">
-                <i class="bi bi-clock"></i>
-                <span>6 hr 07 min</span>
-              </div>
-            </div>
-            <h5 class="card-title fw-bold">Titre formation 1</h5>
-            <p class="category-text">Développement Web</p>
-          
-            <!-- Price + Button + Rating in ONE ROW -->
-            <div class="price-buy-row mt-3 d-flex justify-content-between align-items-center">
-              <div class="price-group">
-                <span class="price-now">$19.00</span>
-                <del>$35.00</del>
-              </div>
-              <div class="buy-rating-group d-flex flex-column align-items-end gap-1">
-                <div class="rating d-flex align-items-center gap-1">
-                  <span class="rating-num">4.7</span>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <button class="btn-buy">Buy Now</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+       @foreach($formations as $key => $formation)
+            <!-- Card 1 -->
+            <div class="col-12 col-sm-6 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm position-relative">
+                    <img src="{{asset('storage/images/formations/'.$formation->picture)}}" class="card-img-top" alt="Projet {{$key}}">
+                    <div class="card-image-overlay">
+                         @if(filled($formation->mode) && isset($formation->mode))
+                        <span class="badge-top">{{$formation->mode == 1 ? 'En ligne' : 'Présentiel'}}</span>
+                        @endif
+                        @if(filled($formation->duration) && isset($formation->duration))
+                        <span class="badge-bottom">{{$formation->duration}}</span>
+                        @endif
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <div class="info-row d-flex justify-content-between align-items-center mb-2">
+                            <div class="views d-flex align-items-center gap-2">
+                                <i class="bi bi-eye"></i>
+                                <span>{{$formation->views ??"0" }} Vues</span>
+                            </div>
+                            <div class="duration d-flex align-items-center gap-2">
+                                <i class="bi bi-clock"></i>
+                                <span>{{$formation->created_time ??""}}</span>
+                            </div>
+                        </div>
+                        <h5 class="card-title fw-bold">{{$formation->title ??""}}</h5>
+                        <p class="category-text">{{$formation->category->name ??""}}</p>
 
-      <!-- Card 2 -->
-      <div class="col-12 col-sm-6 col-lg-4 mb-4">
-        <div class="card h-100 shadow-sm position-relative">
-          <img src="images/analyse.png" class="card-img-top" alt="Projet 2">
-          <div class="card-image-overlay">
-            <span class="badge-top">En ligne</span>
-            <span class="badge-bottom">3 mois</span>
-          </div>
-          <div class="card-body d-flex flex-column">
-            <div class="info-row d-flex justify-content-between align-items-center mb-2">
-              <div class="views d-flex align-items-center gap-2">
-                <i class="bi bi-eye"></i>
-                <span>35k Vues</span>
-              </div>
-              <div class="duration d-flex align-items-center gap-2">
-                <i class="bi bi-clock"></i>
-                <span>6 hr 07 min</span>
-              </div>
-            </div>
-            <h5 class="card-title fw-bold">Titre formation 2</h5>
-            <p class="category-text">Développement Web</p>
-          
-            <!-- Price + Button + Rating in ONE ROW -->
-            <div class="price-buy-row mt-3 d-flex justify-content-between align-items-center">
-              <div class="price-group">
-                <span class="price-now">$19.00</span>
-                <del>$35.00</del>
-              </div>
-              <div class="buy-rating-group d-flex flex-column align-items-end gap-1">
-                <div class="rating d-flex align-items-center gap-1">
-                  <span class="rating-num">4.7</span>
-                  <i class="bi bi-star-fill"></i>
+                        <!-- Price + Button + Rating in ONE ROW -->
+                        <div class="price-buy-row mt-3 d-flex justify-content-between align-items-center">
+                            <div class="price-group">
+                                <span class="price-now">{{'$'.$formation->cost ??""}}</span>
+                                @if(filled($formation->reduction) && isset($formation->reduction))
+                                <del>${{ $formation->reduction}}</del>
+                                @endif
+                            </div>
+                            <div class="buy-rating-group d-flex flex-column align-items-end gap-1">
+                                <div class="rating d-flex align-items-center gap-1">
+                                    <span class="rating-num">{{$formation->rate}}</span>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <a href="{{route('home.formation',$formation->id)}}" target="_blank"  class="btn-buy text-decoration-none">Acheter</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <button class="btn-buy">Buy Now</button>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Card 3 -->
-      <div class="col-12 col-sm-6 col-lg-4 mb-4">
-        <div class="card h-100 shadow-sm position-relative">
-          <img src="images/digitalmarketing.png" class="card-img-top" alt="Projet 3">
-          <div class="card-image-overlay">
-            <span class="badge-top">En ligne</span>
-            <span class="badge-bottom">3 mois</span>
-          </div>
-          <div class="card-body d-flex flex-column">
-            <div class="info-row d-flex justify-content-between align-items-center mb-2">
-              <div class="views d-flex align-items-center gap-2">
-                <i class="bi bi-eye"></i>
-                <span>35k Vues</span>
-              </div>
-              <div class="duration d-flex align-items-center gap-2">
-                <i class="bi bi-clock"></i>
-                <span>6 hr 07 min</span>
-              </div>
-            </div>
-            <h5 class="card-title fw-bold">Titre formation 3</h5>
-            <p class="category-text">Développement Web</p>
-          
-            <!-- Price + Button + Rating in ONE ROW -->
-            <div class="price-buy-row mt-3 d-flex justify-content-between align-items-center">
-              <div class="price-group">
-                <span class="price-now">$19.00</span>
-                <del>$35.00</del>
-              </div>
-              <div class="buy-rating-group d-flex flex-column align-items-end gap-1">
-                <div class="rating d-flex align-items-center gap-1">
-                  <span class="rating-num">4.7</span>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <button class="btn-buy">Buy Now</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
+
+            @endforeach
+    
     </div>
 
   <!-- More formations Button -->
   <div class="text-center mt-4">
-      <button class="btn btn-primary btn-lg">Plus de formations</button>
+      <a href="{{route('home.formations')}}" class="btn btn-primary btn-lg ">Découvrir les formations</a>
   </div>
 
   </div>
@@ -322,7 +253,7 @@
 <section class="campus py-5">
   <div class="container text-center">
       <h1>Nos subventions</h1>
-      <p>Lorem ipsum dolor isit amet, consecteteur adipiscing elit.</p>
+      <p>Accédez à des financements adaptés pour soutenir vos projets.</p>
 
       <div class="row mt-4">
           <div class="col-md-4 mb-4">
@@ -351,7 +282,7 @@
           </div>
       </div>
       <div class="text-center">
-        <a href="#" class="btn btn-primary btn-lg">Plus de subventions</a>
+        <a href="{{route('home.subventions')}}" class="btn btn-primary btn-lg ">Découvrir les subventions</a>
       </div>    
   </div>
 </section>

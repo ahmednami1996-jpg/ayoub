@@ -7,10 +7,11 @@
                   <div class="card-header">
                     <div class="user-receiver d-flex align-items-center">
                       <img
-                        src=""
-                        class="user-receiver--img img img-responsive mr-3"
+                        src="{{asset('storage/images/users/'.$receiver->picture)}}"
+                        class="user-receiver--img img img-responsive rounded-circle" style="width:50px;height:50px"
                       />
-                      <div class="user-receiver--info">
+                    
+                      <div class="user-receiver--info mx-3">
                         <h5 class="text-bold">{{$receiver->username}}</h5>
                         <span>{{$receiver->is_online ? 'online' :"offline"}}</span>
                      
@@ -20,7 +21,7 @@
                   <div class="card-body" id="chat-box">
                 
                     @foreach ($messages as $message )
-                         <div class="box-message mb-2 
+                         <div class="box-message  mb-2 
     {{ auth()->user()->id ==$message->sender_id
         ? 'sender d-md-flex justify-content-end'
         :  'receiver' 
@@ -39,14 +40,14 @@
 
                   </div>
                   <div class="card-footer">
-                    <form  id="message-form">
+                    <form  id="message-form" action="{{route('chat.sent',$receiver->id)}}" method="post">
                         @csrf
                       <div class="form-group ">
                         <div class="input-group mb-3">
-                          <textarea name="" class="form-control" id="message-input" ></textarea>
+                          <textarea name="message" class="form-control" id="message-input" ></textarea>
  
   <div class="input-group-append">
-    <button class="btn btn-outline-primary" type="submit" id="send-button"><i class="far fa-paper-plane"></i></button>
+    <button class="btn btn-outline-primary" id="send-button"><i class="far fa-paper-plane"></i></button>
   </div>
 </div>
                        
@@ -70,8 +71,7 @@
             let chatBox = document.getElementById('chat-box');
             let messageForm = document.getElementById('message-form');
             let messageInput = document.getElementById('message-input');
-            let typingIndicator = document.getElementById('typing-indicator');
-
+           
           
             
 
@@ -98,7 +98,7 @@
                 e.preventDefault();
                 const message = messageInput.value;
                 if (message) {
-                    fetch(`/chat/${receiverId}/send`, {
+                    fetch(`/user/chat/${receiverId}/send`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',

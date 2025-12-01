@@ -36,12 +36,7 @@
 
                     </ul>
 
-                    <!-- Social Icons -->
-                    <div class="mb-3 text-center">
-                        <a href="#" class="me-2 text-dark"><i class="bi bi-globe fs-5"></i></a>
-                        <a href="#" class="me-2 text-dark"><i class="bi bi-linkedin fs-5"></i></a>
-                        <a href="#" class="text-dark"><i class="bi bi-instagram fs-5"></i></a>
-                    </div>
+                  
 
                     <!-- More details button -->
                     <div class="mt-auto">

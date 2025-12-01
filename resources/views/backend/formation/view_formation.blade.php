@@ -8,7 +8,7 @@
 
 
 
-<div class="col-lg-12 col-md-6">
+<div class="col-lg-12">
     <h4>Liste des formations</h4>
      <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

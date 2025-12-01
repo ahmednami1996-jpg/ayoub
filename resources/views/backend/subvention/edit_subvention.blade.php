@@ -17,7 +17,7 @@
             enctype="multipart/form-data">
 
             @csrf
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="title">Titre de la subvention</label>
@@ -39,10 +39,10 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="country">Nom du pays</label>
+                        <label for="country">Pays</label>
                         <select name="country" class="form-control w-md-25 @error('country') is-invalid @enderror"
                             id="country">
 
@@ -60,7 +60,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="city">Nom de la ville</label>
+                        <label for="city">Ville</label>
                         <input type="text" class="form-control" name="city"
                             value="{{$subvention->city}} @error('city') is-invalid @enderror">
                         @error('city')
@@ -71,7 +71,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="url">URL</label>

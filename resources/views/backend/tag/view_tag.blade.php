@@ -10,7 +10,7 @@
 </h4>
 <form method="POST" action="{{route('tag.store')}}">
 @csrf
-<div class="form-group">
+<div class="form-group mb-3">
 <label for="tag">Nom d'étiquette</label>
 <input type="text" placeholder="Entrez le nom de l'étiquette" name="name" class="form-control @error('name') is-invalid @enderror" />
 @error('name')

@@ -9,10 +9,12 @@
                             </a>
                              <hr class="mx-3" />
                             <div class="sb-sidenav-menu-heading">Services</div>
+                            @if(auth()->user()->hasRole('admin'))
                              <a class="nav-link" href="{{route('admin.users.view')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                 Utilisateurs
                             </a>
+                            @endif
                             
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProjects" aria-expanded="false" aria-controls="collapseProjects">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tasks"></i></div>
@@ -34,7 +36,7 @@
                             <div class="collapse" id="collapseInvest" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="{{route('apply.received')}}">Demandes</a>
-                                    <a class="nav-link" hhref="{{route('apply.sent')}}">Candidatures</a>
+                                    <a class="nav-link" href="{{route('apply.sent')}}">Candidatures</a>
                                 </nav>
                             </div>
                             <!-- chat -->
@@ -42,6 +44,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-sms"></i></div>
                                 Chat
                             </a>
+                             @if(auth()->user()->hasRole('admin'))
                             <!-- formations -->
                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseFormations" aria-expanded="false" aria-controls="collapseFormations">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chalkboard-teacher"></i></div>
@@ -50,8 +53,8 @@
                             </a>
                             <div class="collapse" id="collapseFormations" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{route('formation.view')}}">Voir tous les formations</a>
-                                    <a class="nav-link" href="{{route('formation.create')}}">Nouveau formation</a>
+                                    <a class="nav-link" href="{{route('formation.view')}}">Voir toutes les formations</a>
+                                    <a class="nav-link" href="{{route('formation.create')}}">Nouvelle formation</a>
                                 </nav>
 
                             </div>
@@ -63,8 +66,8 @@
                             </a>
                             <div class="collapse" id="collapseSubventions" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{route('subvention.view')}}">Voir tous les subventions</a>
-                                    <a class="nav-link" href="{{route('subvention.create')}}">Nouveau subvention</a>
+                                    <a class="nav-link" href="{{route('subvention.view')}}">Voir toutes les subventions</a>
+                                    <a class="nav-link" href="{{route('subvention.create')}}">Nouvelle subvention</a>
                                 </nav>
                             </div>
                            
@@ -81,6 +84,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-tag"></i></div>
                                 Rôles
                             </a>
+                            @endif
                             <hr  class="mx-3">
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProfile" aria-expanded="false" aria-controls="collapseProfile">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
@@ -89,9 +93,9 @@
                             </a>
                             <div class="collapse" id="collapseProfile" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{route('user.profile')}}">Voir Profil</a>
-                                    <a class="nav-link" href="{{route('user.profile.edit')}}">Modifier Profil</a>
-                                    <a class="nav-link" href="{{route('user.change.password.edit')}}">Changer mot de passe</a>
+                                    <a class="nav-link" href="{{route('user.profile')}}">Profil</a>
+                                    <a class="nav-link" href="{{route('user.profile.edit')}}">Modifier le profil</a>
+                                    <a class="nav-link" href="{{route('user.change.password.edit')}}">Changer le mot de passe</a>
                                 </nav>
                             </div>
                             

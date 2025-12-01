@@ -26,6 +26,8 @@ class ChatController extends Controller
     }
     public function chat($receiverId)
     {
+       
+       
         if(auth()->id()==$receiverId){
             $notification=array("message"=>"vous ne pouvez pas  discuter avec vous meme","alert-type"=>"warning");
             return back()->with($notification);
@@ -37,21 +39,21 @@ class ChatController extends Controller
             $query->where('sender_id', Auth::id())->where('receiver_id', $receiverId);
         })->orWhere(function ($query) use ($receiverId) {
             $query->where('sender_id', $receiverId)->where('receiver_id', Auth::id());
-        })->get();
+        })->orderBy("created_at","asc")->get();
 
         return view('chat', compact('receiver', 'messages'));
     }
 
     public function sendMessage(Request $request, $receiverId)
     {
-        // save message to DB
+     
         $message = Message::create([
             'sender_id'     => Auth::id(),
             'receiver_id'   => $receiverId,
             'message'       => $request['message']
         ]);
         
-        // Fire the message event
+       
         broadcast(new MessageSent($message))->toOthers();
         
         return response()->json(['status' => 'Message sent!']);

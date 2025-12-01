@@ -16,11 +16,9 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\home\HomeController;
 use App\Http\Controllers\admin\LocationController;
 /*------------------ public routes -------------------*/
-Route::get("/tez",function(){
-    return view("layouts.inde");
-});
+
 Route::middleware(['guest'])->group(function () {
-Route::get('/',function(){return view("layouts.home_master");});
+Route::get('/',function(){return redirect()->route('home');});
 Route::get("/logout",[UserController::class,'logout'])->name("user.logout");
 Route::get("/login-page",[UserController::class,'loginPage'])->name("user.login.view");
 Route::get("/register-page",[UserController::class,'registerPage'])->name("user.register.view");
@@ -60,10 +58,7 @@ Route::middleware('auth')->group(function(){
 
     Route::post("/application/{id}/change-status", [ApplicationController::class,'changeStatus'])
         ->name("apply.approve");
-        Route::post("/project/{id}/apply", [ApplicationController::class,'apply'])->name('apply');
-        Route::get("/chatlist",[ChatController::class,'chatList'])->name("chat.list");
-Route::get('/chat/{receiverId}', [ChatController::class, 'chat'])->name('chat');
-Route::post('/chat/{receiverId}/send', [ChatController::class, 'sendMessage']);
+       
 
   
 });
@@ -150,7 +145,7 @@ Route::get("/projects/{id}/delete",[ProjectController::class,"destroy"])->name('
 /** --------------------- user routes -------------- */
 Route::middleware(['auth','role:user,admin'])->group(function (){
 Route::prefix('user')->group(function () {
-// chat route
+
 
 // user route
 Route::get("/profile",[UserController::class,'profile'])->name('user.profile');
@@ -160,10 +155,11 @@ Route::post("/profile/delete",[UserController::class,'profileDestroy'])->name('u
 Route::get("/change-password",[UserController::class,'changePasswordEdit'])->name('user.change.password.edit');
 Route::post("/change-password/update",[UserController::class,'changePasswordUpdate'])->name('user.change.password.update');
 
-//apply routes
-
-//   
-
+ 
+ Route::post("/project/{id}/apply", [ApplicationController::class,'apply'])->name('apply');
+        Route::get("/chatlist",[ChatController::class,'chatList'])->name("chat.list");
+Route::get('/chat/{receiverId}', [ChatController::class, 'chat'])->name('chat');
+Route::post('/chat/{receiverId}/send', [ChatController::class, 'sendMessage'])->name("chat.sent");
     
    
 

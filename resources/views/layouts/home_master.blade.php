@@ -55,9 +55,9 @@
         <div class="d-flex align-items-center gap-3">
           <!-- Sign In / Sign Up Button -->
            @guest
-          <button id="auth-btn" class="btn btn-primary">
-            <a href="{{route('user.login.view')}}" class="text-white text-decoration-none">Sign In / Sign Up</a>
-          </button>
+        
+            <a href="{{route('user.login.view')}}" id="auth-btn" class="btn text-white text-decoration-none">Sign In / Sign Up</a>
+        
           @endguest
 
           <!-- Profile Dropdown (shown when logged in) -->
@@ -65,7 +65,7 @@
           <div id="profile-info" class="dropdown" >
             <button class="btn btn-light d-flex align-items-center gap-2 border rounded-pill px-3 py-2" 
                     type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img id="profile-pic" src="{{asset('storage/images/static/elon.jpg')}}" alt="Profile" class="rounded-circle" width="36" height="36">
+              <img id="profile-pic" src="{{asset('storage/images/users/'.auth()->user()->picture)}}" alt="Profile" class="rounded-circle" width="36" height="36">
               <span id="profile-name" class="fw-medium">{{auth()->user()->username}}</span>
             </button>
             <ul class="dropdown-menu dropdown-menu-end shadow">
@@ -95,7 +95,7 @@
       <!-- LEFT: Logo + Social -->
       <div class="left-col">
         <img src="{{asset('storage/logo.png')}}" alt="Logo" class="logo">
-        <p>lorem ipsum lorem ipsum.</p>
+        <p>Créer, Investir, Réussir Ensemble.</p>
         <div class="social-media">
           <a href="#"><i class="fab fa-twitter"></i></a>
           <a href="#"><i class="fab fa-facebook"></i></a>

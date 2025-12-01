@@ -15,7 +15,7 @@
 @csrf
 
 
-<div class="form-group">
+<div class="form-group mb-3">
     <label for="category" class="form-label">Nom de catégorie</label>
     <input type="text" value="{{$category->name}}" name="name" class="form-control @error('name') is-invalid @enderror"/>
     @error('name')

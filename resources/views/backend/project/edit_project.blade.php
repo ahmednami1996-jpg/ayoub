@@ -13,7 +13,7 @@
         <form action="{{route('project.update',$project->id)}}" method="post" enctype="multipart/form-data">
 
             @csrf
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-12 d-flex justify-content-center">
                     <div class="form-group text-center mx-auto">
                         <div class="text-center">
@@ -49,6 +49,38 @@
 
                 </div>
             </div>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="country">Pays</label>
+                        <select name="country" class="form-control w-md-25 @error('country') is-invalid @enderror"
+                            id="country">
+
+                            @foreach($countries as $code => $name)
+                            <option value="{{$name}}" {{$project->country == $name ? 'selected':''}}>{{$name}}
+                            </option>
+
+                            @endforeach
+                        </select>
+                        @error('country')
+                        <span class="invalid-feedback">{{$message}}</span>
+                        @enderror
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="city">Ville</label>
+                        <input type="text" class="form-control" name="city"
+                            value="{{$project->city}} @error('city') is-invalid @enderror">
+                        @error('city')
+                        <span class="invalid-feedback">{{$message}}</span>
+                        @enderror
+
+                    </div>
+                </div>
+            </div>
+
             <div class="row mb-3">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -110,21 +142,23 @@
                     <select class="form-control @error('investment_type') is-invalid @enderror" id="investment_type"
                         name="investment_type">
 
-                        <option value="financier" {{$project->investment_type =="financier" ?"selected":"" }}>
+                        <option value="investissement financier" {{$project->investment_type =="investissement financier" ?"selected":"" }}>
                             Investissement financier</option>
-                        <option value="materiel" {{$project->investment_type =="materiel" ?"selected":"" }}>
+                        <option value="investissement matériel" {{$project->investment_type =="investissement matériel" ?"selected":"" }}>
                             Investissement matériel</option>
-                        <option value="immatériel" {{$project->investment_type =="immatériel" ?"selected":"" }}>
+                        <option value="investissement immatériel" {{$project->investment_type =="investissement immatériel" ?"selected":"" }}>
                             Investissement immatériel</option>
-                        <option value="humain" {{$project->investment_type =="humain" ?"selected":"" }}>Investissement
+                        <option value="investissement
+                            humai" {{$project->investment_type =="Investissement
+                            humain" ?"selected":"" }}>Investissement
                             humain</option>
-                        <option value="technologique" {{$project->investment_type =="technologique" ?"selected":"" }}>
+                        <option value="investissement technologique" {{$project->investment_type =="investissement technologique" ?"selected":"" }}>
                             Investissement technologique</option>
-                        <option value="commercial" {{$project->investment_type =="commercial" ?"selected":"" }}>
+                        <option value="investissement commercial" {{$project->investment_type =="investissement commercial" ?"selected":"" }}>
                             Investissement commercial</option>
-                        <option value="opérationnel" {{$project->investment_type =="opérationnel" ?"selected":"" }}>
+                        <option value="investissement opérationnel" {{$project->investment_type =="investissement opérationnel" ?"selected":"" }}>
                             Investissement opérationnel</option>
-                        <option value="stratégique" {{$project->investment_type =="stratégique" ?"selected":"" }}>
+                        <option value="investissement stratégique" {{$project->investment_type =="investissement stratégique" ?"selected":"" }}>
                             Investissement stratégique</option>
                     </select>
                     @error('investment_type')

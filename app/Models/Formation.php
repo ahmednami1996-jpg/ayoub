@@ -28,6 +28,9 @@ class Formation extends Model
 {
     return $this->created_at->format('H \h i \m\i\n');
 }
+public function getView(){
+    return $this->attributes['views'];
+}
 public function getViewsAttribute(){
    return $this->formatNumberShort($this->attributes['views']);
 }

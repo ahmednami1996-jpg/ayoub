@@ -56,7 +56,7 @@
                                     <span class="rating-num">{{$formation->rate}}</span>
                                     <i class="bi bi-star-fill"></i>
                                 </div>
-                                <a href="{{route('home.formation',$formation->id)}}" target="_blank"  class="btn-buy">Acheter</a>
+                                <a href="{{route('home.formation',$formation->id)}}" target="_blank"  class="btn-buy text-decoration-none">Acheter</a>
                             </div>
                         </div>
                     </div>

@@ -10,7 +10,7 @@
 </h4>
 <form method="POST" action="{{route('role.store')}}">
 @csrf
-<div class="form-group">
+<div class="form-group mb-3">
 <label for="role">Nom de rôle</label>
 <input type="text" placeholder="Entrez le nom du rôle" name="name" class="form-control @error('name') is-invalid @enderror" />
 @error('name')

@@ -12,7 +12,7 @@
         <form action="{{route('subvention.store')}}" method="post" enctype="multipart/form-data">
 
             @csrf
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-md-6">
 
                     <div class="form-group">
@@ -35,10 +35,10 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="country">Nom du pays</label>
+                        <label for="country">Pays</label>
                         <select name="country" class="form-control w-md-25 @error('country') is-invalid @enderror" id="country">
                             <option value="" disable selected>--- tous les pays ---</option>
                             @foreach($countries as $code => $name)
@@ -54,7 +54,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="city">Nom de la ville</label>
+                        <label for="city">Ville</label>
                         <input type="text" name="city" placeholder="Entrez la ville de la subvention" placeholder="Enter your city @error('city') is-invalid @enderror" class="form-control">
                         @error('city')
                         <span class="invalid-feedback">{{$message}}</span>
@@ -64,7 +64,7 @@
                 </div>
 
             </div>
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="url">URL</label>
@@ -92,7 +92,7 @@
                 <div class="col-md-6">
                     
                     <label for="eligibilities">Eligibilités</label>
-                    <textarea name="eligibilities" id="eligibilities" class="form-control" row="4" placeholder="Entrez eligibilités une par ligne"></textarea>
+                    <textarea name="eligibilities" id="eligibilities" class="form-control" row="4" placeholder="Entrez les eligibilités une par ligne"></textarea>
                 </div>
             </div>
 

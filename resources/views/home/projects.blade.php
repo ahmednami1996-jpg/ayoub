@@ -25,7 +25,7 @@
         <h6 class="mb-0">Filtrer Projets</h6>
     </div>
 
-    <div class="card-body p-3">
+    <div class="card-body p-4">
         <form method="GET" action="{{ route('home.projects') }}">
 
           
@@ -143,13 +143,7 @@
                                 <div class="mb-3">
                                     <div class="d-flex justify-content-between">
                                         <h5 class="card-title mb-1 fw-bold">{{$project->title}}</h5>
-                                        <div class="views d-flex align-items-center gap-2">
-                                            <i class="bi bi-eye"></i>
-                                            <span>
-                                                {{ $project->views >= 1000 ? number_format($project->views / 1000, 1) . 'K' : $project->views }}
-                                                Vues
-                                            </span>
-                                        </div>
+                                       
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center mt-1">
                                         <p class="text-muted mb-0 small">
@@ -159,7 +153,7 @@
                                         </p>
                                         <div class="d-flex align-items-center gap-1 text-muted small">
                                             <i class="bi bi-geo-alt-fill"></i>
-                                            <span>{{$project->city.', '.$project->country}}</span>
+                                            <span>{{Str::limit($project->city,10).', '.Str::limit($project->country,10)}}</span>
                                         </div>
                                     </div>
                                     <div class="business-model d-flex align-items-center gap-2 mt-2">
@@ -178,7 +172,7 @@
                                         <p class="text-muted mb-0 small mt-1">{{$project->investment_type}}</p>
                                     </div>
                                     <a href="{{route('home.project',$project->id)}}"
-                                        class="btn btn-outline-primary btn-sm">View
+                                        class="btn btn-outline-primary btn-sm">Voir
                                         Projet</a>
                                 </div>
                             </div>
